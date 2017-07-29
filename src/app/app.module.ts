@@ -1,18 +1,44 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { RouterModule, Routes } from "@angular/router";
 
 import { AppComponent } from './app.component';
+import { LoginComponent } from './login/login.component';
+import { EmailComponent } from './email/email.component';
+import { SignupComponent } from './signup/signup.component';
+import { StudentlistComponent } from './studentlist/studentlist.component';
+import { InvalidPageComponent } from "./invalid-page/invalid-page.component";
+import { NavbarComponent } from './navbar/navbar.component';
+
+
+const appRoutes: Routes = [
+  {path: '', component: LoginComponent},
+  {path: 'login-email', component: EmailComponent},
+  {path: 'signup', component: SignupComponent},
+  {path: 'login', component: LoginComponent},
+  {path: 'studentlist', component: StudentlistComponent},
+  {path: '**', component: InvalidPageComponent}
+]
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LoginComponent,
+    EmailComponent,
+    SignupComponent,
+    StudentlistComponent,
+    InvalidPageComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+
+    RouterModule.forRoot(appRoutes)
+
   ],
   providers: [],
   bootstrap: [AppComponent]
