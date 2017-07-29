@@ -1,3 +1,32 @@
-<p>
-  invalid-page works!
-</p>
+
+<div class="row">
+  <!-- add logo -->
+  <div class="col-sm-12" style="padding-left: 100px;">
+    <img class="center" height="100%" width="300px;" src="http://www.tmisd.us/pictures/2015.16.pics/backtoschool11.jpg" alt="" >
+  </div>
+</div>
+
+
+<div class="alert alert-danger" role="alert">
+  <strong>Invalid Page!</strong> The Page you selected does not exist.
+</div>
+
+
+
+
+
+<nav class="navbar fixed-bottom navbar-inverse ">
+    <a class="btn btn-info btn-lg btn-block btn-warning" [routerLink]="['/studentlist']">
+      <span style="font-size: x-large;">Student List</span>
+      &nbsp;&nbsp;
+      <i class="fa fa-child fa-2x"></i>
+    </a>
+
+    <br><br>
+
+  <a class="btn btn-info btn-lg btn-block" [routerLink]="['/']">
+      <span style="font-size: x-large;">Logout</span>
+      &nbsp;&nbsp;
+      <i class="fa fa-sign-out fa-2x"></i>
+    </a>
+</nav>

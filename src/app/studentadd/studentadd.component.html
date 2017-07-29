@@ -1,0 +1,86 @@
+<br>
+<!-- User Display Name -->
+<div class="card card-outline-primary">
+  <div class="card-block">
+    <div class="row">
+      <div class="col-2">
+        <img src="http://www.freeiconspng.com/uploads/profile-icon-9.png" class="img-fluid" alt="Responsive image" 
+          height="45" width="45" 
+          class="rounded-circle bg-success">
+      </div>
+      <div class="col-8" style="padding-top: 10px;">
+        <span style="font-size: x-large; font-weight: lighter;">Display Name Here</span>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+
+<div class="alert alert-danger" role="alert">
+  <strong>ERROR!</strong> Change a few things up and try submitting again.
+</div>
+
+
+<div class="card">
+  <div class="card-block">
+    <div class="row">
+        <div class="col-sm-8">
+          <span class="text-muted">Student: {{txtStudenName}}</span>
+          <span class="pull-right" style="font-size: large; font-weight: bold;color: #E30AE3;" *ngIf="isGirl">Girl</span>
+          <span class="pull-right" style="font-size: large; font-weight: bold;color: #0A23E3;" *ngIf="isBoy">Boy</span>
+        </div>
+      </div>
+  </div>
+</div>
+<br>
+<div class="card card-info">
+  <div class="card-block">
+    <form action="">
+      <div class="row">
+
+        <!-- <div class="col-sm-12">
+          <input type="text" class="form-control" id="txtStudentName" name="txtStudentName" style="font-size: x-large;" placeholder="Enter Student Name">
+          <br>
+        </div> -->
+        <div class="col-sm-12">
+          <div class="input-group">
+            <input [(ngModel)]="txtStudenName" id="txtStudenName" name="txtStudenName" type="text" class="form-control" placeholder="Enter Student Name">
+            <span class="input-group-btn">
+              <button (click)="isBoy=true;isGirl=false;" class="btn btn-primary btn-lg" type="button">Boy</button>
+            </span>
+            <span class="input-group-btn">
+              <button (click)="isBoy=false;isGirl=true;" class="btn btn-danger btn-lg" style="background-color: #E30AE3;" type="button">Girl</button>
+            </span>
+          </div>
+
+        </div>
+
+      </div>
+      <br>
+      <a class="btn btn-info btn-lg btn-block btn-warning" [routerLink]="['/add-student']">
+        <span style="font-size: xx-large;">Save Student</span>
+        &nbsp;&nbsp;
+        <i class="fa fa-child fa-2x"></i>
+      </a>
+    </form>
+
+  </div>
+</div>
+
+
+
+<nav class="navbar fixed-bottom navbar-inverse ">
+    <a class="btn btn-block btn-secondary btn-outline-secondary" [routerLink]="['/studentlist']">
+      <span style="font-size: x-large;">Back to Student List</span>
+      &nbsp;&nbsp;
+      <i class="fa fa-backward fa-2x"></i>
+    </a>
+
+    <br>
+
+  <a class="btn btn-info  btn-block" [routerLink]="['/']">
+      <span style="font-size: x-large;">Logout</span>
+      &nbsp;&nbsp;
+      <i class="fa fa-sign-out fa-2x"></i>
+    </a>
+</nav>

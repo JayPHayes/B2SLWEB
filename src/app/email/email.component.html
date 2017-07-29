@@ -1,3 +1,55 @@
-<p>
-  email works!
-</p>
+
+
+<!-- Login with Email -->
+
+<div class="row">
+  <!-- add logo -->
+  <div class="col-sm-12" style="padding-left: 100px;">
+    <img class="center" height="100%" width="300px;" src="http://www.tmisd.us/pictures/2015.16.pics/backtoschool11.jpg" alt="" >
+  </div>
+</div>
+
+<br>
+<form action="">
+  <div class="row">
+    <div class="col-sm-12">
+      <input type="text" class="form-control" id="txtEmail" name="txtEmail" placeholder="Email Address: me@email.com" style="font-size: x-large;">            
+      <br>
+    </div>
+    
+    <div class="col-sm-12">
+      <input type="password" class="form-control" id="txtEmail" name="txtEmail" placeholder="Enter Password" style="font-size: x-large;">            
+    </div>
+  </div>
+
+  <br>
+  <br>
+  <br>
+
+  <div class="row">
+    <div class="col-sm-12">
+      <button class="btn btn-outline-info btn-lg btn-block">
+        <span style="font-size: x-large;">Sign in With Email</span>
+        <i class="fa fa-sign-in" style="font-size: x-large;"></i>
+      </button>
+    </div>
+  </div>
+</form>
+
+<br>
+<br>
+
+<a class="btn btn-outline-secondary btn-lg btn-block" [routerLink]="['/']">
+  <span style="font-size: x-large;">Social Logins</span>
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  <i class="fa fa-facebook text-primary" style="font-size: x-large;"></i>
+  &nbsp;&nbsp;
+  <i class="fa fa-google  text-danger" style="font-size: x-large;"></i>
+</a>
+
+
+  <nav class="navbar fixed-bottom navbar-inverse bg-primary">
+    <div class="text-center">
+      <a class="navbar-brand" [routerLink]="['/signup']">No Account? Create one here.</a>
+    </div>
+  </nav>

@@ -11,7 +11,10 @@ import { SignupComponent } from './signup/signup.component';
 import { StudentlistComponent } from './studentlist/studentlist.component';
 import { InvalidPageComponent } from "./invalid-page/invalid-page.component";
 import { NavbarComponent } from './navbar/navbar.component';
-
+import { StudentaddComponent } from './studentadd/studentadd.component';
+import { StudentdetailsComponent } from './studentdetails/studentdetails.component';
+import { SchoolListComponent } from './school-list/school-list.component';
+import { ShoppingListComponent } from './shopping-list/shopping-list.component';
 
 const appRoutes: Routes = [
   {path: '', component: LoginComponent},
@@ -19,6 +22,11 @@ const appRoutes: Routes = [
   {path: 'signup', component: SignupComponent},
   {path: 'login', component: LoginComponent},
   {path: 'studentlist', component: StudentlistComponent},
+  {path: 'studentdetails', component: StudentdetailsComponent},
+  {path: 'shoppinglist', component: ShoppingListComponent},
+  {path: 'schoolList', component: SchoolListComponent},
+
+  {path: 'add-student', component: StudentaddComponent},
   {path: '**', component: InvalidPageComponent}
 ]
 
@@ -30,7 +38,11 @@ const appRoutes: Routes = [
     SignupComponent,
     StudentlistComponent,
     InvalidPageComponent,
-    NavbarComponent
+    NavbarComponent,
+    StudentaddComponent,
+    StudentdetailsComponent,
+    SchoolListComponent,
+    ShoppingListComponent
   ],
   imports: [
     BrowserModule,
