@@ -10,25 +10,29 @@
 </div>
 
 <br>
-<form action="">
+<form #formData='ngForm' (ngSubmit)="onSubmit(formData)">
   <div class="row">
     <div class="col-sm-12">
-      <input type="text" class="form-control" id="txtEmail" name="txtEmail" placeholder="Email Address: me@email.com" style="font-size: x-large;">            
+      <input type="text" (ngModel)="txtEmail" class="form-control" id="txtEmail" name="txtEmail" placeholder="Email Address: me@email.com" style="font-size: x-large;">            
       <br>
     </div>
     
     <div class="col-sm-12">
-      <input type="password" class="form-control" id="txtEmail" name="txtEmail" placeholder="Enter Password" style="font-size: x-large;">            
+      <input type="password" (ngModel)="txtPassword" class="form-control" id="txtPassword" name="txtPassword" placeholder="Enter Password" style="font-size: x-large;">            
     </div>
   </div>
 
   <br>
+  <div class="alert alert-danger" role="alert" *ngIf="error">
+    {{error}}
+  </div>
+
   <br>
   <br>
 
   <div class="row">
     <div class="col-sm-12">
-      <button class="btn btn-outline-info btn-lg btn-block">
+      <button class="btn btn-outline-info btn-lg btn-block" type="submit">
         <span style="font-size: x-large;">Sign in With Email</span>
         <i class="fa fa-sign-in" style="font-size: x-large;"></i>
       </button>

@@ -1,5 +1,6 @@
 
 
+
 <!-- Login with Email -->
 
 <div class="row">
@@ -10,32 +11,35 @@
 </div>
 
 <br>
-<form action="">
+<form #formData="ngForm" (ngSubmit)="onSubmit(formData)" >
   <div class="row">
     <div class="col-sm-12">
-      <input type="text" class="form-control" id="txtEmail" name="txtEmail" placeholder="Email Address: me@email.com" style="font-size: x-large;">      
+      <input type="text" class="form-control" (ngModel)="txtEmail" id="txtEmail" name="txtEmail" placeholder="Email Address: me@email.com" style="font-size: x-large;">      
       <br>
     </div>
     
     <div class="col-sm-12">
-      <input type="password" class="form-control" id="txtEmail" name="txtEmail" placeholder="Enter Password" style="font-size: x-large;">           
+      <input type="password" class="form-control" (ngModel)="txtPassword" id="txtPassword" name="txtPassword" placeholder="Enter Password" style="font-size: x-large;">           
       <br> 
     </div>
     
     <div class="col-sm-12">
-      <input type="text" class="form-control" id="txtDisplayName" name="txtDisplayName" placeholder="Enter Display Name" style="font-size: x-large;">      
+      <input type="text" class="form-control" (ngModel)="txtDisplayName" id="txtDisplayName" name="txtDisplayName" placeholder="Enter Display Name" style="font-size: x-large;">      
     </div>
 
   </div>
-
   <br>
+  <div class="alert alert-danger" role="alert" *ngIf="error">
+    {{error}}
+  </div>
+
   <br>
   <br>
 
   <div class="row">
     <div class="col-sm-12">
-      <button class="btn btn-outline-info btn-lg btn-block">
-        <span style="font-size: x-large;">Sign in With Email</span>
+      <button type="submit" [disabled]="!formData.valid"  class="btn btn-outline-info btn-lg btn-block">
+        <span style="font-size: x-large;">Signup With Email</span>
         <i class="fa fa-sign-in" style="font-size: x-large;"></i>
       </button>
 

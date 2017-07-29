@@ -11,7 +11,7 @@
   <!-- Add Login Email Buttons -->
 <div class="row" style="padding-left: 25px; padding-right: 25px;">
   <div class="col-sm-12 ">
-    <button class="btn btn-block btn-lg btn-outline-primary">
+    <button (click)="loginFb()" id="btnLoginFaceBook" name="btnLoginFaceBook" class="btn btn-block btn-lg btn-outline-primary">
       <i class="fa fa-facebook-square"></i>
       <span>Login With Facebook</span>
     </button>
@@ -19,7 +19,7 @@
   </div>
   
   <div class="col-sm-12 ">
-    <button class="btn btn-block btn-lg btn-outline-danger">
+    <button (click)="loginGoogle()" class="btn btn-block btn-lg btn-outline-danger">
       <i class="fa fa-google"></i>
       <span>Login With Google</span>
     </button>
@@ -38,6 +38,12 @@
   </div>
 
 </div>
+<br><br>
+<div class="alert alert-danger" role="alert" *ngIf="error">
+  <strong>Login Unsuccessful!</strong> <br> 
+  {{error}}
+</div>
+
 
 
 
