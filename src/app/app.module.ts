@@ -1,11 +1,17 @@
-import { AngularFireAuth } from 'angularfire2/auth';
-import { environment } from './../environments/environment';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+
+import { FirebaseSchoolService } from './servics/firebase-school.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule, Routes } from "@angular/router";
+
+import { AngularFireAuth, AngularFireAuthModule } from 'angularfire2/auth';
+import { environment } from './../environments/environment';
+import { AngularFireDatabase } from 'angularfire2/database';
 import { AngularFireModule } from "angularfire2";
+
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { EmailComponent } from './email/email.component';
@@ -50,11 +56,13 @@ const appRoutes: Routes = [
     BrowserModule,
     FormsModule,
     HttpModule,
+    AngularFireAuthModule,
     AngularFireModule.initializeApp(environment.firebase),
+    AngularFireDatabaseModule, 
     RouterModule.forRoot(appRoutes)
 
   ],
-  providers: [AngularFireAuth],
+  providers: [ FirebaseSchoolService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

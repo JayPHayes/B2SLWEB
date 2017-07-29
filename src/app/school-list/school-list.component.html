@@ -25,7 +25,7 @@
         <div class="col-sm-12">
           <span>
             <!-- <span class="text-muted">** No School Clasroom Items Selected **</span> -->
-             <span class="text-primary">5th Grade - Mt Laural Elementary </span> 
+             <span class="text-primary">5th Grade - {{selSchool?.name}} </span> 
              
           </span>
         </div>
@@ -33,53 +33,54 @@
     </div>      
   </div>
 
-  <hr>  
-  <table class="table table-bordered table-responsive table-sm">
-    <tr>
+<br>
+  <table class="table table-bordered table-sm" [hidden]="isSchoolList">
+    <tr *ngFor="let s of schoolList">
       <td>
-        <a href="" class="btn btn-sm">
+        <button (click)="showClassRoomList(s)" href="" class="btn btn-sm">
           <i class="fa fa-chevron-right fa-2x"></i>
-        </a>
+        </button>
       </td>
       <td>
-        <span style="font-size: large;" >Mt Laural Elementary</span>
+        <span style="font-size: large;" >{{s.name}}</span>
         <br>
-        <span style="font-size: small;" class="text-muted">Kintergargen</span>
-      </td>
-      
-    </tr>
-    <tr>
-      <td>
-        <a href="" class="btn btn-sm">
-          <i class="fa fa-chevron-right fa-2x"></i>
-        </a>
-      </td>
-      <td>
-        <span style="font-size: large;" >Shelby Elementary School</span>
-        <br>
-        <span style="font-size: small;" class="text-muted">1st grade  - 6th Grade</span>
+        <span style="font-size: small;" class="text-muted">{{s.county}}</span>
       </td>
     </tr>
-    <tr>
-      <td>
-        <a href="" class="btn btn-sm">
-          <i class="fa fa-chevron-right fa-2x"></i>
-        </a>
-      </td>
-      <td>
-        <span style="font-size: large;" >Mt Laural Elementary</span>
-        <br>
-        <span style="font-size: small;" class="text-muted">Kintergargen</span>
-      </td>
-    </tr>
-    
   </table>
 
+  <button class="btn btn-sm" (click)="isSchoolList = !isSchoolList" [hidden]="!isSchoolList">
+    <i class="fa fa-backward"></i>
+    Back
+  </button>
+  <div class="card" [hidden]="!isSchoolList">
+    <div class="card-block">
+      
+      <table class="table table-hover table-responsivex">
+        <tr *ngFor="let c of classList">
+          <td>
+            <button href="" class="btn btn-primary " (click)="setClassList()">
+              {{c.name.substring(0,4)}}
+            </button>
+          </td>
+          <td class="pull-left">
+            <span style="font-size: large;">{{c.name}}</span>
+            <br>
+            <span style="font-size: small;" class="text-muted">xxxxxxxxx</span>
+          </td>
+          <td>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
 
 
 
 
-<nav class="navbar fixed-bottom navbar-inverse ">
+
+<nav class="navbar  navbar-inverse ">
     <a class="btn btn-block btn-secondary btn-outline-secondary" [routerLink]="['/studentlist']">
       <i class="fa fa-backward fa-2x"></i>
       &nbsp;&nbsp;
