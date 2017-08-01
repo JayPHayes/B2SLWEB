@@ -15,11 +15,30 @@ export class FirebaseSchoolService {
   classRoom: FirebaseObjectObservable<ClassRoom>
   classRoomList: FirebaseListObservable<ClassRoom[]>
   classRoomItemList: FirebaseListObservable<ClassItem[]>
+
+  studentList: FirebaseListObservable<Student[]>;
   
 
   constructor(private db: AngularFireDatabase) { 
     this.schoolList =  db.list(environment.FB_NODE_SCHOOL.name) as FirebaseListObservable<School[]>;
   }
+
+  addStudent(userKey, newStudent){
+
+    console.log(newStudent);
+    
+    this.getStudents(userKey);
+    console.log(this.studentList)
+
+    return this.studentList.push(newStudent);
+  }
+
+  getStudents(userKey){
+    this.studentList = this.db.list(environment.FB_NODE_STUDENT.name + '/' + userKey);
+    console.log(this.studentList)
+    return this.studentList
+  }
+
 
  getSchools(){
    console.log(' getSchools()')
@@ -55,6 +74,11 @@ export class FirebaseSchoolService {
     return this.classRoomItemList
   }
 
+}
+
+interface Student {
+  $key?: string;
+  name: string
 }
 
 interface ClassItem {

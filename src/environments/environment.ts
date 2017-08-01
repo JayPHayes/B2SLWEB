@@ -14,6 +14,16 @@ export const environment = {
     messagingSenderId: "230369581224"
   },
 
+  FB_NODE_STUDENT: {
+    name:  "/students",
+    FB_ITEM_SCHOOL: {
+      ITEM_KEY: "key",
+      ITEM_NAME: "studentName",
+      ITEM_SchoolName: "schoolName",
+      ITEM_Qty: "qty",
+      ITEM_ClassRoomName: "classRoomName"
+    }
+  },
   FB_NODE_SCHOOL: {
     name:  "/schools",
     FB_ITEM_SCHOOL: {

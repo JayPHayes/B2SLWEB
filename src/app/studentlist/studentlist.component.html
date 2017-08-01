@@ -27,47 +27,27 @@
 <!-- Student List -->
 <div class="card">
   <div class="card-block">
-    
-    <div class="row" style="padding-bottom: 5px;border-bottom: solid thin silver;">
-        <div class="col-7">
-          <span style="font-size: x-large;">Studen: Alyiah</span>
-          
-        </div>
-        <div class="col-2">
-          <span class="pull-Xright" style="font-size: x-large; font-weight: bold;color: #E30AE3;">Girl</span>
-        </div>
-        <div class="col-2">
-          <a [routerLink]="['/studentdetails']"><i class="fa fa-arrow-right fa-2x"></i></a>
-        </div>
 
-        <div class="col-sm-12">
-          <span>
-            <span class="text-muted">** No School Clasroom Items Selected **</span>
-            <!-- 5th Grade - Mt Laural Elementary -->
-          </span>
-        </div>
+  <div class="row" style="padding-bottom: 5px;border-bottom: solid thin silver;" *ngFor="let s of studentList">
+      <div class="col-7">
+        <span style="font-size: large;">{{s.studentName}}</span>
+        
+      </div>
+      <div class="col-2">
+        <span class="pull-Xright" style="font-size: large; font-weight: bold;color: #E30AE3;" *ngIf="s.boyGirl=='GIRL'">Girl</span>
+         <span class="pull-Xright" style="font-size: large; font-weight: bold;color:blue;" *ngIf="s.boyGirl=='BOY'">Boy</span> 
+      </div>
+      <div class="col-2">
+        <a [routerLink]="['/studentdetails']"><i class="fa fa-arrow-right fa-2x"></i></a>
       </div>
 
-      <div class="row">
-            <div class="col-7">
-              <span style="font-size: x-large;">Studen: Steven</span>
-              
-            </div>
-            <div class="col-2">
-              <span class="pull-Xright" style="font-size: x-large; font-weight: bold;color: #0A23E3;">Boy</span>
-            </div>
-            <div class="col-2">
-              <a [routerLink]="['/studentdetails']"><i class="fa fa-arrow-right fa-2x"></i></a>
-            </div>
-
-            <div class="col-sm-12">
-              <span>
-                3th Grade - Mt Laural Elementary
-              </span>
-            </div>
-            
-          </div>
-      </div>      
+      <div class="col-sm-12">
+        <span>
+          <span class="text-muted">{{s.classRoomName}}</span>
+          <!-- 5th Grade - Mt Laural Elementary -->
+        </span>
+      </div>
+    </div>    
       
   </div>
 
@@ -78,7 +58,7 @@
 
 
 
-<nav class="navbar fixed-bottom navbar-inverse ">
+<nav class="navbar  navbar-inverse ">
     <a class="btn btn-info  btn-block btn-warning" [routerLink]="['/add-student']">
       <span style="font-size: x-large;">Add Student</span>
       &nbsp;&nbsp;

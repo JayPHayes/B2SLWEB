@@ -1,3 +1,4 @@
+import { FirebaseSchoolService } from './../servics/firebase-school.service';
 import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Router } from '@angular/router';
@@ -12,8 +13,9 @@ export class StudentlistComponent implements OnInit {
   name: any = "";
   photoURL: string = "";
   state: string = '';
+  studentList: any;
 
- constructor(public af: AngularFireAuth, private router: Router) { 
+ constructor(public af: AngularFireAuth, private router: Router, private firebaseSvc:FirebaseSchoolService) { 
     this.user = af.authState;
     console.log("this.user: ", this.user);
 
@@ -23,6 +25,13 @@ export class StudentlistComponent implements OnInit {
         if(auth.displayName){
           this.name = auth.displayName
           this.photoURL = auth.photoURL
+
+
+           this.firebaseSvc.getStudents(auth.uid).subscribe(studList => {
+            this.studentList =  studList
+            console.log("XXXX this.studentList: ", this.studentList);
+          });
+
         } else {
           this.name = auth.email
           this.photoURL = "http://www.freeiconspng.com/uploads/profile-icon-9.png";  

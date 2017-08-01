@@ -1,3 +1,4 @@
+import { FirebaseSchoolService } from './../servics/firebase-school.service';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
@@ -14,7 +15,12 @@ user: any;
   photoURL: string = "";
   state: string = '';
 
-  constructor(public af: AngularFireAuth, private router: Router) { 
+  txtStudenName: string;
+  userKey: string = "";
+  boyGirl: string = "";
+
+
+  constructor(public af: AngularFireAuth, private router: Router, private firebaseSvc: FirebaseSchoolService) { 
     this.user = af.authState;
     console.log("this.user: ", this.user);
 
@@ -24,6 +30,8 @@ user: any;
         if(auth.displayName){
           this.name = auth.displayName
           this.photoURL = auth.photoURL
+          this.userKey = auth.uid;
+          
         } else {
           this.name = auth.email
           this.photoURL = "http://www.freeiconspng.com/uploads/profile-icon-9.png";  
@@ -34,6 +42,16 @@ user: any;
 
   }
 
+  saveStudent(){
+    let newStudent = {
+      studentName: this.txtStudenName,
+      classRoomName: "",
+      boyGirl: this.boyGirl
+    }
+
+    this.firebaseSvc.addStudent(this.userKey,newStudent);
+     this.router.navigateByUrl('/studentlist');
+  }
 
   logout(){
     this.af.auth.signOut();

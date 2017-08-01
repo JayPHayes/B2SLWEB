@@ -1,3 +1,4 @@
+import { AuthGuard } from "./services/auth-guard.service";
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 
 import { FirebaseSchoolService } from './servics/firebase-school.service';
@@ -29,13 +30,14 @@ const appRoutes: Routes = [
   {path: 'login-email', component: EmailComponent},
   {path: 'signup', component: SignupComponent},
   {path: 'login', component: LoginComponent},
-  {path: 'studentlist', component: StudentlistComponent},
-  {path: 'studentdetails', component: StudentdetailsComponent},
-  {path: 'shoppinglist', component: ShoppingListComponent},
-  {path: 'schoolList', component: SchoolListComponent},
+  {path: 'studentlist', component: StudentlistComponent, canActivate: [AuthGuard]},
+  {path: 'studentdetails', component: StudentdetailsComponent, canActivate: [AuthGuard]},
+  {path: 'shoppinglist', component: ShoppingListComponent, canActivate: [AuthGuard]},
+  {path: 'schoolList', component: SchoolListComponent, canActivate: [AuthGuard]},
 
-  {path: 'add-student', component: StudentaddComponent},
+  {path: 'add-student', component: StudentaddComponent, canActivate: [AuthGuard]},
   {path: '**', component: InvalidPageComponent}
+  // { path: 'members', component: OtherComponent, canActivate: [AuthGuard] }
 ]
 
 @NgModule({
@@ -62,7 +64,7 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes)
 
   ],
-  providers: [ FirebaseSchoolService],
+  providers: [ FirebaseSchoolService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
